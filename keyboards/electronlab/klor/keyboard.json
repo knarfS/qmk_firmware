@@ -90,7 +90,7 @@
             "typing_heatmap": true
         },
         "default": {
-            "animation": "breathing",
+            "animation": "gradient_left_right",
             "on": true,
             "hue": 128
         },

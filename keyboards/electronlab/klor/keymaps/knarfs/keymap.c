@@ -34,15 +34,34 @@ enum custom_keycodes {
     MAKE_H,
 };
 
-#define GUI_A MT(MOD_LGUI, KC_A)
-#define ALT_S MT(MOD_LALT, KC_S)
-#define CTL_D MT(MOD_LCTL, KC_D)
-#define SHT_F MT(MOD_LSFT, KC_F)
+// Home Row Mod Base Qwertz
+#define GUI_A    MT(MOD_LGUI, KC_A)
+#define ALT_S    MT(MOD_LALT, KC_S)
+#define CTL_D    MT(MOD_LCTL, KC_D)
+#define SHT_F    MT(MOD_LSFT, KC_F)
+#define SHT_J    MT(MOD_RSFT, KC_J)
+#define CTL_K    MT(MOD_RCTL, KC_K)
+#define ALT_L    MT(MOD_LALT, KC_L)
+#define GUI_OE   MT(MOD_RGUI, DE_ODIA)
 
-#define SHT_J MT(MOD_RSFT, KC_J)
-#define CTL_K MT(MOD_LCTL, KC_K)
-#define ALT_L MT(MOD_LALT, KC_L)
-#define GUI_OE MT(MOD_LGUI, DE_ODIA)
+// Home Row Mod Symbol Layer
+#define GUI_BSLS MT(MOD_LGUI, DE_BSLS)
+#define ALT_SLSH MT(MOD_LALT, DE_SLSH)
+#define CTL_LCBR MT(MOD_LCTL, DE_LCBR)
+#define SHT_RCBR MT(MOD_LSFT, DE_RCBR)
+#define SHT_LPRN MT(MOD_RSFT, DE_LPRN)
+#define CTL_RPRN MT(MOD_RCTL, DE_RPRN)
+#define ALT_MINS MT(MOD_LALT, DE_MINS)
+#define GUI_DQUO MT(MOD_RGUI, DE_DQUO)
+
+// Home Row Mod Number Layer
+#define GUI_F11  MT(MOD_LGUI, KC_F11)
+#define ALT_F4   MT(MOD_LALT, KC_F4)
+#define CTL_F5   MT(MOD_LCTL, KC_F5)
+#define SHT_F6   MT(MOD_LSFT, KC_F6)
+#define SHT_4    MT(MOD_RSFT, KC_4)
+#define CTL_5    MT(MOD_RCTL, KC_5)
+#define ALT_6    MT(MOD_LALT, KC_6)
 
 #ifdef AUDIO_ENABLE
   #define WINXP_SOUND W__NOTE(_DS6), Q__NOTE(_DS5), H__NOTE(_AS5), H__NOTE(_GS5), H__NOTE(_DS5), H__NOTE(_DS6), H__NOTE(_AS5)
@@ -54,42 +73,33 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-   [_QWERTZ] = LAYOUT_polydactyl(
-                 KC_Q,    KC_W,    KC_E,     KC_R,      KC_T,                          DE_Z,      KC_U,      KC_I,     KC_O,    KC_P,
-      KC_TAB,    GUI_A,   ALT_S,   CTL_D,    SHT_F,     KC_G,                          KC_H,      SHT_J,     CTL_K,    ALT_L,    GUI_OE,   DE_ADIA,
-      KC_LCTL,   DE_Y,    KC_X,    KC_C,     KC_V,      KC_B,     KC_MUTE,   KC_MPLY,  KC_N,      KC_M,      KC_COMM,  KC_DOT,  KC_SLSH,  KC_BSLS,
-                                   MO(_SYMB), KC_SPC,    MO(_NAVI), LCTL_T(KC_ESC),  KC_TAB, MO(_NUMB),  KC_ENT,    MO(_SYMB)
- ),
+    [_QWERTZ] = LAYOUT_polydactyl(
+                   KC_Q,    KC_W,    KC_E,     KC_R,      KC_T,                          DE_Z,      KC_U,      KC_I,     KC_O,    KC_P,
+        XXXXXXX,   GUI_A,   ALT_S,   CTL_D,    SHT_F,     KC_G,                          KC_H,      SHT_J,     CTL_K,    ALT_L,    GUI_OE,   DE_ADIA,
+        XXXXXXX,   DE_Y,    KC_X,    KC_C,     KC_V,      KC_B,     KC_MUTE,   KC_MPLY,  KC_N,      KC_M,      KC_COMM,  KC_DOT,  KC_SLSH,  DE_UDIA,
+                                     MO(_SYMB), KC_SPC,    MO(_NAVI), LCTL_T(KC_ESC),  KC_TAB, MO(_NUMB),  KC_ENT,    MO(_SYMB)
+    ),
 
+    [_SYMB] = LAYOUT_polydactyl(
+                 DE_AT,    DE_MINS,  DE_LBRC,  DE_RBRC,  DE_CIRC,                     DE_EXLM, DE_LABK,  DE_RABK,  DE_EQL,   DE_AMPR,
+        XXXXXXX, GUI_BSLS, ALT_SLSH, CTL_LCBR, SHT_RCBR, DE_ASTR,                     DE_QUES, SHT_LPRN, CTL_RPRN, ALT_MINS, GUI_DQUO, XXXXXXX,
+        DE_DEG,  DE_HASH,  DE_DLR,   DE_PIPE,  DE_TILD,  DE_GRV,  KC_MUTE,   KC_MPLY, DE_PLUS, DE_PERC,  DE_SCLN,  DE_COLN,  DE_QUOT,  XXXXXXX,
+                                     _______,  XXXXXXX,  _______, XXXXXXX,   XXXXXXX, _______, XXXXXXX,  _______
+    ),
 
-   [_SYMB] = LAYOUT_polydactyl(
-                DE_AT,   DE_MINS,  DE_LBRC,  DE_RBRC,  DE_CIRC,                       DE_EXLM,  DE_LABK,  DE_RABK,  DE_EQL,   DE_AMPR,
-      XXXXXXX,  DE_BSLS, DE_SLSH,  DE_LCBR,  DE_RCBR,  DE_ASTR,                       DE_QUES,  DE_LPRN,  DE_RPRN,  DE_MINS,  DE_DQUO,  XXXXXXX,
-      DE_DEG,   DE_HASH, DE_DLR,   DE_PIPE,  DE_TILD,  DE_GRV,  KC_MUTE,   KC_MPLY,   DE_PLUS,  DE_PERC,  DE_SCLN,  DE_COLN,  DE_QUOT,  XXXXXXX,
-                                   _______,  XXXXXXX,  _______, XXXXXXX,   XXXXXXX,   _______,  XXXXXXX,  _______
- ),
+    [_NUMB] = LAYOUT_polydactyl(
+                  KC_F12,   KC_F7,    KC_F8,    KC_F9,    XXXXXXX,                     XXXXXXX, KC_7,     KC_8,     KC_9,     XXXXXXX,
+        XXXXXXX,  GUI_F11,  ALT_F4,   CTL_F5,   SHT_F6,   XXXXXXX,                     XXXXXXX, SHT_4,    CTL_5,    ALT_6,    KC_LGUI,  XXXXXXX,
+        XXXXXXX,  KC_F10,   KC_F1,    KC_F2,    KC_F3,    XXXXXXX, KC_MUTE,   KC_MPLY, KC_0,    KC_1,     KC_2,     KC_3,     XXXXXXX,  XXXXXXX,
+                                      _______,  XXXXXXX,  _______, XXXXXXX,   XXXXXXX, _______, XXXXXXX,  _______
+    ),
 
-   [_NUMB] = LAYOUT_polydactyl(
-               KC_F12,   KC_F7,    KC_F8,    KC_F9,    XXXXXXX,                       XXXXXXX,  KC_7,     KC_8,     KC_9,     XXXXXXX,
-     XXXXXXX,  KC_F11,   KC_F4,    KC_F5,    KC_F6,    XXXXXXX,                       XXXXXXX,  KC_4,     KC_5,     KC_6,     XXXXXXX,  XXXXXXX,
-     XXXXXXX,  KC_F10,   KC_F1,    KC_F2,    KC_F3,    XXXXXXX,  KC_MUTE,   KC_MPLY,  KC_0,     KC_1,     KC_2,     KC_3,     XXXXXXX,  XXXXXXX,
-                                   _______,  XXXXXXX,  _______,  XXXXXXX,   XXXXXXX, _______,   XXXXXXX,  _______
- ),
-
-   [_NAVI] = LAYOUT_polydactyl(
-              XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_VOLU,                       KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,     XXXXXXX,
-    XXXXXXX,  KC_LGUI,   KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,                       KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,    XXXXXXX,   XXXXXXX,
-    DB_TOGG,  KC_PSCR,   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_MUTE,  KC_MUTE,   KC_MPLY,  XXXXXXX,  KC_BSPC,  XXXXXXX,  KC_DEL,     XXXXXXX,   XXXXXXX,
-                                   _______,  XXXXXXX,  _______,  XXXXXXX,   XXXXXXX,  _______,  XXXXXXX,  _______
- ),
-
-//   [_NUM] = LAYOUT_polydactyl(
-//               RM_SPI,  RM_HUI,  HF_NEXT,  CK_UP,    KC_LCBR,                       KC_RCBR,  KC_LEFT,  KC_UP,    KC_RGHT,  KC_HOME,
-//     RM_VAI,  RM_MOD,  RM_M_B,  HF_TOGG,  CK_TOGG,  KC_LBRC,                       KC_RBRC,  XXXXXXX,  KC_DOWN,  XXXXXXX,  KC_PSCR,  KC_PGUP,
-//     RM_VAD,  RM_SPD,  RM_HUD,  HF_PREV,  CK_DOWN,  KC_LPRN,  KC_MUTE,   KC_MPLY,  KC_RPRN,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_END,   KC_PGDN,
-//                                   XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LSFT,   KC_RSFT, XXXXXXX,  XXXXXXX, XXXXXXX
-// ),
-
+    [_NAVI] = LAYOUT_polydactyl(
+                  RM_NEXT,   RM_HUEU,  RM_SPDU,  XXXXXXX,  KC_VOLU,                       KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,     XXXXXXX,
+        RM_VALU,  KC_LGUI,   KC_LALT,  KC_LCTL,  KC_LSFT,  KC_VOLD,                       KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,    XXXXXXX,   XXXXXXX,
+        RM_VALD,  KC_PSCR,   RM_HUED,  RM_SPDD,  XXXXXXX,  KC_MUTE,  KC_MUTE,   KC_MPLY,  XXXXXXX,  KC_BSPC,  XXXXXXX,  KC_DEL,     XXXXXXX,   XXXXXXX,
+                                       _______,  XXXXXXX,  _______,  XXXXXXX,   XXXXXXX,  _______,  XXXXXXX,  _______
+    ),
 };
 
 #ifdef OLED_ENABLE
@@ -106,19 +116,19 @@ int dmacro_num = 0;
     const char PROGMEM play_ico[] = {0xD2, 0xE1, 0};
 
     bool dynamic_macro_record_start_user(int8_t direction) {
-          dmacro_num = 1;
+        dmacro_num = 1;
         return false;
     }
 
     bool dynamic_macro_record_end_user(int8_t direction) {
-          dmacro_num = 2;
-          dmacro_timer = timer_read();
+        dmacro_num = 2;
+        dmacro_timer = timer_read();
         return false;
     }
 
     bool dynamic_macro_play_user(int8_t direction) {
-          dmacro_num = 3;
-          dmacro_timer = timer_read();
+        dmacro_num = 3;
+        dmacro_timer = timer_read();
         return false;
     }
 #endif
@@ -126,21 +136,19 @@ int dmacro_num = 0;
 
 void matrix_scan_user(void) {
   #ifdef DYNAMIC_MACRO_ENABLE
-    if(dmacro_num > 0){
+    if (dmacro_num > 0){
         if (timer_elapsed(dmacro_timer) < 3000) {
-            strcpy ( o_text, dmacro_text[dmacro_num] );
-          }
-        else {
+            strcpy (o_text, dmacro_text[dmacro_num]);
+        } else {
             if (dmacro_num == 1) {
-                strcpy ( o_text, dmacro_text[1] );
-              }
-            else {
-                strcpy ( o_text, layer_state_str );
+                strcpy (o_text, dmacro_text[1]);
+            } else {
+                strcpy (o_text, layer_state_str);
                 dmacro_num = 0;
-              }
-          }
-      }
-   #endif
+            }
+        }
+    }
+  #endif
 }
 
 void render_os_lock_status(void) {
@@ -224,47 +232,57 @@ void render_os_lock_status(void) {
         }
     #endif
 
-     #ifdef HAPTIC_ENABLE
+    #ifdef HAPTIC_ENABLE
         if (haptic_get_enable()) {
             oled_write_P(hap_en, false);
         } else {
             oled_write_P(hap_di, false);
         }
-
-     #endif
+    #endif
 }
 
 int layerstate = 0;
 
 /*
 layer_state_t layer_state_set_kb(layer_state_t state) {
-      switch (get_highest_layer(layer_state | default_layer_state)) {
-            case 0:
-                strcpy ( layer_state_str, "BASE QWERTY");
-                break;
-            case 1:
-                strcpy ( layer_state_str, "SYMBOL");
-                break;
-            case 2:
-                strcpy ( layer_state_str, "NUMBER");
-                break;
-            case 3:
-                strcpy ( layer_state_str, "NAVIGATION");
-                break;
-            default:
-                strcpy ( layer_state_str, "XXXXXX");
-        }
-      if (dmacro_num < 1) {
-          strcpy ( o_text, layer_state_str );
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+    case 0:
+        strcpy ( layer_state_str, "BASE QWERTY");
+        break;
+    case 1:
+        strcpy ( layer_state_str, "SYMBOL");
+        break;
+    case 2:
+        strcpy ( layer_state_str, "NUMBER");
+        break;
+    case 3:
+        strcpy ( layer_state_str, "NAVIGATION");
+        break;
+    default:
+        strcpy ( layer_state_str, "XXXXXX");
+    }
+    if (dmacro_num < 1) {
+        strcpy ( o_text, layer_state_str );
     }
     return update_tri_layer_state(state, _SYMB, _NAVI, _NUMB);
 }
 */
 
 bool oled_task_kb(void) {
-    if (!oled_task_user()) {
-        return false;
-    }
+    //if (!oled_task_user()) {
+    //    return false;
+    //}
+
+    if (is_keyboard_master()) {
+        #ifdef DYNAMIC_MACRO_ENABLE
+            if(dmacro_num == 1){ oled_write_P(rec_ico, false); }
+            if(dmacro_num == 2){ oled_write_P(stop_ico, false); }
+            if(dmacro_num == 3){ oled_write_P(play_ico, false); }
+        #endif
+
+        oled_write_ln(o_text, false);
+        render_os_lock_status();
+    } else {
         static const char PROGMEM klor_face[] = {
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0xf0, 0xf0, 0xf0, 0xf0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -300,23 +318,6 @@ bool oled_task_kb(void) {
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
         };
-
-    if (is_keyboard_master()) {
-        /*
-
-        #ifdef DYNAMIC_MACRO_ENABLE
-            if(dmacro_num == 1){ oled_write_P(rec_ico, false); }
-            if(dmacro_num == 2){ oled_write_P(stop_ico, false); }
-            if(dmacro_num == 3){ oled_write_P(play_ico, false); }
-        #endif
-
-        oled_write_ln(o_text, false);
-        render_os_lock_status();
-
-        */
-        oled_write_raw_P(klor_face, sizeof(klor_face));
-    } else {
-
         oled_write_raw_P(klor_face, sizeof(klor_face));
     }
     return false;
@@ -325,18 +326,18 @@ bool oled_task_kb(void) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case SHT_F:
-            return TAPPING_TERM - 150;
-        case SHT_J:
-            return TAPPING_TERM - 150;
-        default:
-            return TAPPING_TERM;
+    case SHT_F:
+        return TAPPING_TERM - 150;
+    case SHT_J:
+        return TAPPING_TERM - 150;
+    default:
+        return TAPPING_TERM;
     }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-      case KC_MPLY:
+    case KC_MPLY:
         if (record->event.pressed) {
         }
         break;
@@ -346,21 +347,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),           ENCODER_CCW_CW(KC_WBAK, KC_WFWD) },
-    [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),           ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
-    [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),           ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
-    [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),           ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
+    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WBAK, KC_WFWD) },
+    [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
+    [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
+    [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
 };
 #endif
 
 #ifdef COMBO_ENABLE
-
 enum combos {
-  QW_ESC,
-  WE_CLOSETAB,
-  ER_LASTTAB,
-  RT_PRTSCR,
-  WR_TERMINAL,
+    QW_ESC,
+    WE_CLOSETAB,
+    ER_LASTTAB,
+    RT_PRTSCR,
+    WR_TERMINAL,
 };
 
 const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
@@ -370,11 +370,11 @@ const uint16_t PROGMEM rt_combo[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM wr_combo[] = {KC_W, KC_R, COMBO_END};
 
 combo_t key_combos[] = {
-  [QW_ESC] = COMBO(qw_combo, KC_ESC),
-  [WE_CLOSETAB] = COMBO(we_combo, LCTL(KC_F4)),
-  [ER_LASTTAB] = COMBO(er_combo, LCTL(LSFT(KC_T))),
-  [RT_PRTSCR] = COMBO(rt_combo, KC_PSCR),
-  [WR_TERMINAL] = COMBO(wr_combo, LCTL(LALT(KC_T))),
+    [QW_ESC] = COMBO(qw_combo, KC_ESC),
+    [WE_CLOSETAB] = COMBO(we_combo, LCTL(KC_F4)),
+    [ER_LASTTAB] = COMBO(er_combo, LCTL(LSFT(KC_T))),
+    [RT_PRTSCR] = COMBO(rt_combo, KC_PSCR),
+    [WR_TERMINAL] = COMBO(wr_combo, LCTL(LALT(KC_T))),
 };
-
 #endif
+
