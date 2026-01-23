@@ -255,6 +255,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case SHT_J:
     case SHT_A:
     case SHT_T:
+        return TAPPING_TERM - 100;
+    case NAV_DEL:
         return TAPPING_TERM - 150;
     default:
         return TAPPING_TERM;

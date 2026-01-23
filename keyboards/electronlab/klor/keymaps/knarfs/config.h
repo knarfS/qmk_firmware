@@ -27,6 +27,7 @@ for more options.
 
 //#define TAPPING_TERM 170
 #define TAPPING_TERM 300
+#define TAPPING_TERM_PER_KEY
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define TAPPING_FORCE_HOLD
