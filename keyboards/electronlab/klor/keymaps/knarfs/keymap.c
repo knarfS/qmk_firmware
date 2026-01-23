@@ -85,6 +85,9 @@ enum custom_keycodes {
 #define SHT_4    MT(MOD_RSFT, KC_4)
 #define CTL_5    MT(MOD_RCTL, KC_5)
 #define ALT_6    MT(MOD_LALT, KC_6)
+/* Other Mod Tabs */
+#define NAV_DEL  LT(_NAV,     KC_BSPC)
+#define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 
 
 /***********
@@ -96,14 +99,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                          DE_Z,     KC_U,     KC_I,     KC_O,     KC_P,
         DE_SS,    GUI_A,    ALT_S,    CTL_D,    SHT_F,    KC_G,                          KC_H,     SHT_J,    CTL_K,    ALT_L,    GUI_OE,   DE_ADIA,
         XXXXXXX,  DE_Y,     KC_X,     KC_C,     KC_V,     KC_B,     KC_MUTE,   KC_MPLY,  KC_N,     KC_M,     KC_COMM,  KC_DOT,   DE_MINS,  DE_UDIA,
-                                    MO(_SYM), KC_SPC, MO(_NAV), LCTL_T(KC_ESC), KC_TAB,  MO(_NUM), KC_ENT,   MO(_SYM)
+                                      MO(_SYM), KC_SPC,   NAV_DEL,  CTL_ESC,   KC_TAB,   MO(_NUM), KC_ENT,   MO(_SYM)
     ),
 
     [_BUTECK] = LAYOUT_polydactyl(
                   KC_B,     KC_U,     KC_DOT,   KC_COMM,  DE_UDIA,                       KC_P,     KC_C,     KC_L,     KC_M,     KC_F,
         DE_SS,    GUI_H,    ALT_I,    CTL_E,    SHT_A,    KC_O,                          KC_D,     SHT_T,    CTL_R,    ALT_N,    GUI_S,    KC_X,
         XXXXXXX,  KC_K,     DE_Y,     DE_ODIA,  DE_ADIA,  KC_Q,     KC_MUTE,   KC_MPLY,  KC_J,     KC_G,     KC_W,     KC_V,     DE_Z,     XXXXXXX,
-                                    MO(_SYM), KC_SPC, MO(_NAV), LCTL_T(KC_ESC), KC_TAB,  MO(_NUM), KC_ENT,   MO(_SYM)
+                                      MO(_SYM), KC_SPC,   NAV_DEL,  CTL_ESC,   KC_TAB,   MO(_NUM), KC_ENT,   MO(_SYM)
     ),
 
     [_SYM] = LAYOUT_polydactyl(
